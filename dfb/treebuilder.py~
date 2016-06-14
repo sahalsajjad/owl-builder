@@ -1,0 +1,146 @@
+#######################################################################################################
+#  OWL Tree Builder																												#
+#  Code written by: Sahal Sajjad, email:sahalsajjad@gmail.com														#
+#  Copyright: 																														#
+#		You are free to modify this code and use for any non-commercial use, provided that the author   #
+#		Sahal Sajjad is acknowledged. Under no circumstances shall the name of the author be used for   #
+#     any kind of promotion for the modified code without prior permission.									#
+#######################################################################################################
+'''
+	Dependencies: 
+			1. ontospy
+'''
+from ontospy import *
+import pprint
+import json
+
+def getIdentifier(_class, MAPPER):
+	'''
+	For a given class returns the unique identifier Number. If the class is not found, returns False.
+	'''
+	for key in MAPPER.keys():
+		if MAPPER[key]["class"] == _class:
+			return MAPPER[key]["id"]
+	return False	
+
+def getClassName(_class):
+	'''
+	Returns the cleaned classname for the input class object.
+	'''
+	return _class.qname.split(":")[-1].strip()
+
+def assignIdentifiers(_classes, MAPPER):
+	'''
+	For the input List of classes, assign each class with a unique identifier.
+	'''
+	identifier = 0	
+	for x in range(len(_classes)):
+		MAPPER[identifier]={
+			"class":_classes[x],
+			"id":identifier
+		}
+		identifier+=1
+	return MAPPER
+
+def serializeProperty(children, depth):
+	'''
+	Digs deep into the child hierarchy of the given set of children
+	'''
+	CHILDTREE=dict()
+	for i in range(len(children)):
+		child = children[i]
+		_ch = child.children()
+		if len(_ch) > 0:
+			CHILDTREE[i]={
+				"property":getClassName(child),
+				"children":serializeProperty(_ch, depth+1),
+				"hasChild":"yes",
+				"depth":depth+1
+	
+			}
+		else:
+			CHILDTREE[i]={
+				"property":getClassName(child),
+				"hasChild":"no",
+				"depth":depth+1
+			}
+		try:
+			if len(child.domain_of) > 0 :
+				CHILDTREE[i]["properties"] = serializeProperty(child.domain_of,depth+1)
+				CHILDTREE[i]["parent-class"]= getDomains(child)
+		except AttributeError:
+			print child 
+	return CHILDTREE
+
+def serialize(children, depth):
+	'''
+	Digs deep into the child hierarchy of the given set of children
+	'''
+	CHILDTREE=dict()
+	for i in range(len(children)):
+		child = children[i]
+		_ch = child.children()
+		if len(_ch) > 0:
+			CHILDTREE[i]={
+				"class":getClassName(child),
+				"children":serialize(_ch, depth+1),
+				"hasChild":"yes",
+				"depth":depth+1
+	
+			}
+		else:
+			CHILDTREE[i]={
+				"class":getClassName(child),
+				"hasChild":"no",
+				"depth":depth+1
+			}
+		try:
+			if len(child.domain_of) > 0 :
+				CHILDTREE[i]["properties"] = serializeProperty(child.domain_of,0)
+		except AttributeError:
+			print child 
+	return CHILDTREE
+
+def buildTreeJsonResponse(graph):
+	'''
+	Interface method for serializing an owl with classes and properties as an editable Tree.
+	'''
+	classes = graph.classes
+	MAPPER = dict()
+	MAPPER = assignIdentifiers(classes, MAPPER)
+	TREE = dict()
+	
+	for i in range(len(classes)):	
+		#for each class	
+		cl = classes[i]
+		#find the list of children
+		children = cl.children()
+		#obtain the unique identifier of the class
+		identifier = getIdentifier(cl, MAPPER)
+		#if class is found in the MAPPER
+		if len(cl.parents()) == 0:
+			#And if class has children
+			if len(children) > 0 :
+				#Serialize
+				TREE[identifier]={
+					"class": getClassName(cl),
+					"hasChild": "yes",
+					"children":serialize(children,0),
+					"depth":0		
+				}
+			
+			#And if class doesn't have children
+			else:
+				#Serialize
+				TREE[identifier]={
+					"class": getClassName(cl),
+					"hasChild": "no",
+					"depth":0
+				}
+			if len(cl.domain_of) > 0 :
+				TREE[identifier]["properties"] = serialize(cl.domain_of,0) 			
+		
+	data = json.dumps(TREE,indent=2)
+	return data			
+
+

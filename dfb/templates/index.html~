@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> DFB | Dynamic Form Builder for OWL</title> 
+    <script type="text/javascript" src="{% static 'data/data.json' %}"></script>
+    <!--base href="http://demos.telerik.com/kendo-ui/treeview/checkboxes"-->
+    <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   </head>
+<body>
+	<nav class="navbar navbar-dfb">
+  	<center><h3>Dynamic Form Builder for OWL</h3></center>
+	</nav>
+	<div class="container" style="margin-top:30vh;">
+  	<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<center><h3 style="color:#4D7A97;">Upload your OWL file here...</h3></center>
+			<p>{{ form.as_p}}</p><br><br>
+			<input type="submit" value="upload" class="btn btn-info">
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+</body>

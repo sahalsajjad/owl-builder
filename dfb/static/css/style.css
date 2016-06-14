@@ -1,0 +1,116 @@
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}    
+.btn-info{
+    background-color:#4D7A97;
+    border-color: #4161a1;
+}                   
+input{
+    display: inline-block;
+    float: left;
+}
+.k-header{
+    background-color: #4D7A97;
+    background-image:none; 
+    padding:20px;
+    min-height: 80vh;
+    max-height: 80vh;
+    color:white;
+    overflow-x:hidden;
+    margin:0px; 
+    border-top:1px solid #6f94d4;
+}
+.form-box{
+width: 60%;
+border: 2px solid #4161a1;
+padding-top: 12px;
+margin: 3% 0% 3% 3%;
+color: #4161a1;
+}
+.navbar-dfb{
+   background: #4D7A97;
+   color:white; 
+   border-radius: 0px;
+   border-bottom: 2px solid #4161a1;
+   margin-bottom:0px;
+   min-height: 10vh;
+}
+.generator{
+background: #4161a1;
+min-height: 12vh;
+padding-top: 25px;
+position: absolute;
+z-index: 3000;
+top: 90vh;
+left: 0;
+
+}
+.form-control{
+    padding:0px;
+}
+.generator a{
+   font-size: 22px;
+   color: white;
+}
+#tree-view{
+        padding: 15px;
+}
+    .plus-button{
+        padding: 0px 4px;
+        border-radius: 0px;
+        height: 15px;
+        width: 15px;
+        border: 1px dotted black;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 12px;
+        background:white;
+        color:black;
+        margin:4px;
+        font-weight: normal;
+
+    }
+    .plus-button:hover{
+        cursor: pointer;
+        opacity:0.8;
+    }
+    .empty-space{
+        
+        padding:13px;
+    }
+    input[type="checkbox"]{
+        margin:0;
+        float:none;
+        margin-right:3px;
+    }
+    .data-holder{
+        display: inline;
+        color:pink;
+        font-weight: bold;
+    }
+    .data-holder-property{
+        color:black;
+    }
+    #form-area{
+      padding: 20px;
+      overflow-x:hidden;
+      height:75vh;
+
+    }
+ .form-holder{
+  margin:1% 1%;
+  padding: 15px;
+  border:1px solid rgb(77,122, 151);
+ }  
+ .form-title{
+  background: rgb(77,122, 151);
+padding: 2px 15px;
+color: white;
+ } 
+ .class-crumb{
+  color:gold;
+ }

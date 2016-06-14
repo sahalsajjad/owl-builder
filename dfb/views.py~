@@ -1,0 +1,46 @@
+from django.shortcuts import render, render_to_response
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+from dfb.forms import *
+from dfb.models import *
+from django.conf import settings
+import subprocess, shutil, os, json
+from django.http import HttpResponseRedirect
+from treebuilder import buildTreeJsonResponse
+from ontospy import *
+class Run(TemplateView):
+	template_name='run.html'
+	def get_context_data(self, **kwargs):
+		context = super(Run, self).get_context_data(**kwargs)
+		uploadedowl = OWLFile.objects.order_by('-time_added')
+		try:
+			upload = uploadedowl[0]
+			graph = Graph(str(upload.owlfile.path))
+			data = buildTreeJsonResponse(graph)
+			context['data']=data
+			f = open('dfb/static/js/data.json',"w")
+			s = open('dfb/static/js/serialize.json',"w")
+			s.write(graph.serialize)
+			f.write("data=")
+			f.write(data)
+			context['status']=200
+		except IndexError:
+			donothing = True
+			context['status']=500
+		return context
+
+class Upload(FormView):
+	template_name = 'index.html'
+	form_class = UploadOWLFileForm
+	success_url = '/build-form/'
+	def get_context_data(self, **kwargs):
+		context = super(Upload, self).get_context_data(**kwargs)
+		context['form'] = UploadOWLFileForm(self.request.POST, self.request.FILES)
+		return context
+	def form_valid(self, form):
+		form.save()
+		return HttpResponseRedirect(self.success_url)
+	def form_invalid(self, form):
+		return super(Upload, self).form_invalid(form)	
+		
+

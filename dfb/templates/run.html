@@ -1,0 +1,230 @@
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Owl Builder | Dynamic Form Builder for OWL</title> 
+    <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/data.json' %}"></script>
+    <script src="{% static 'js/serialize.json' %}"></script>
+    <!-- end of the stylesheet for for dynamically generated fields -->
+    <style>
+    
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dfb">
+    <center><h3>Dynamic Form Builder for OWL</h3></center>
+</nav>
+<div id="example">
+
+    <div class="demo-section k-header col-lg-4">
+        <div class="box-col">
+            <h4>Classes and Properties</h4>
+            <div id="treeview"></div>
+        </div>
+        <div class="box-col">
+            <p id="result"></p>
+        </div>
+    </div>
+    <div id="empty-message" style="margin-top:30vh; color:#4D7A97;" class="col-lg-8">
+        <center><h3>No nodes selected to display form.</h3></center>
+    </div>
+    <div id="form-area" style="margin-top:5vh; color:#4D7A97;" class="col-lg-8">
+    </div>
+    <div class="col-lg-4 generator"><center><a onclick="generateForm()">Generate Form</a></center></div>
+    <script>
+    $(document).ready(function(){
+        window.lookup = function(id){
+            for( var key in classReference){
+                try{
+                    var premise = classReference[key]['id']== id;
+                    if(premise){
+                
+                        return key;
+                    }
+                }catch(err){
+                    console.log(err.message);
+                }    
+            }
+            return false;
+        }
+        window.findChildren = function(class_name, classReference){
+
+            try{
+                return classReference[class_name]["children"];
+            }catch(err){
+                console.log(err.message);
+            }
+        } 
+        window.nestedTree = function( depth, parent_id, uniq){
+            console.log("nestedTree: "+parent_id);
+            var un = uniq.toString();
+            if(typeof(uniq) === 'object'){
+                    un = uniq["id"];
+            }
+            $('#plus-'+un).hide();
+            var sugar="";
+            if(depth == 0){
+                var sugar = "_";
+            }
+            $('#check_'+sugar+un).css('margin-left','25px');
+            var treeview = document.getElementById(uniq);
+            if(typeof(uniq) === 'object'){
+                treeview = document.getElementById(uniq["id"]);
+            }
+            var parent_class = lookup(parent_id);
+            console.log(parent_class);
+            var children = classReference[parent_class]["children"];
+            console.log(children);
+            for(var i=0; i< children.length; i++){
+                var child_class = lookup(children[i]);
+                var child_id = children[i].toString();
+                var new_child_children = classReference[child_class]["children"];
+                
+                if(depth < 1){
+                    var new_id = "_"+un+"_"+child_id;
+                }else{
+                    var new_id = un+"_"+child_id;
+                }
+                if(new_child_children.length > 0){
+                    var upd_depth = depth + 1;
+                        
+                    treeview.innerHTML+="<br>";
+                    
+                    var space = (upd_depth*40).toString() +"px";
+                        treeview.innerHTML+="<span id=\"space-"+new_id+"\"></span><span id=\"plus-"+new_id+"\""+"class=\"plus-button\""+"onclick=\"nestedTree("+upd_depth+","+child_id+","+new_id+")\">+"+
+                        "</span>";
+                       
+                    $('#space-'+new_id).css('margin-left',space);    
+                }
+
+                else{
+                    var upd_depth = depth + 1;
+                    var space = (upd_depth*37.5).toString() +"px";
+                    treeview.innerHTML+="<br><span id=\"em-"+new_id+"\" class=\"empty-space\"></span>";
+                    $('#em-'+new_id).css('margin-left',space);    
+                }
+            treeview.innerHTML+="<input id=\"check_"+new_id+ "\" type=\"checkbox\">"+"<div class=\"data-holder\""+"id=\""+new_id+"\">"+child_class+"</div>";
+            }
+        }
+        
+        function printObjectKeys() {
+            var treeview = document.getElementById('treeview');
+            var key = data["0"];
+            for(var i=0; i < key.length; i++){
+                var cl = key[i]["class"];
+                var children = key[i]["children"];
+                
+                var uniq =key[i]["id"].toString();
+
+                if(children.length > 0){
+                    treeview.innerHTML+=
+                    "<span  id=\"plus-"+uniq+"\""+"class=\"plus-button\""+ 
+                           "onclick=\"nestedTree("+0+","+key[i]["id"]+","+uniq+")\">+"+
+                    "</span>";
+                    
+                }
+                else{
+                    treeview.innerHTML+="<span class=\"empty-space\"></span>";   
+                }    
+                var sugar="";
+
+                treeview.innerHTML+=
+                "<input id=\"check__"+uniq+  "\" type=\"checkbox\">"+
+                "<div  class=\"data-holder\""+ 
+                      "id=\""+uniq+"\">"+ cl.toString()+
+                "</div>"+
+                "<br>";
+            }
+        }
+        printObjectKeys();
+        window.SubmitForm = function(){
+            var separator = "~~~~~";
+            var send_data = [];
+            $('#generated-form input').each(function() {
+                var id = $(this).prop('id');
+                var hierarchy = id.split("check");
+                var id_list = hierarchy[1].split("_");
+                var lookup_list = id_list.splice(2,id_list.length);
+                var classes = "";
+                for (var i = 0; i< lookup_list.length ; i++) {
+                    if(i>0){
+                        classes+=separator;
+                    }
+                    classes+=lookup(lookup_list[i]);
+                };
+               var val = $(this).prop('value');
+               send_data.push({"classes":classes, "value":val});
+            });
+            $.ajax({
+                url: '/submit/form/',
+                method: 'GET',
+                data:{
+                    "form_data":send_data
+                },
+                success:function(data){
+                    console.log("success!");
+                }
+        
+            });
+        }
+
+        window.generateForm = function(){
+            var selected = [];
+            $('#treeview input:checked').each(function() {
+                selected.push($(this).attr('id'));
+            });
+            console.log(selected);
+            $('#empty-message').hide();
+            var formarea = document.getElementById('form-area');
+            var content="<div class=\"row\">";
+            content+="<form action=\"#\" method=\"get\" id=\"generated-form\">";
+
+            for( var i=0; i < selected.length; i++ ){
+                var elem = selected[i];
+
+                content+="<div class=\"form-holder col-lg-11\" id=\"form-"+elem+"\">";
+                content+="<div class=\"form-title form-group\">";
+                var hierarchy_list = elem.split("-");
+                if(hierarchy_list.length > 1){
+                   hierarchy_list = hierarchy_list[1].split("_")
+                }
+                else{
+                    hierarchy_list = hierarchy_list[0].split("_");
+                }
+                var identifiers = hierarchy_list.splice(2, hierarchy_list.length );
+                var form_class = identifiers[identifiers.length - 1];
+                for(var j=0; j < identifiers.length - 1; j++){
+                    var parent_class = identifiers[j];
+                    content+="<span class=\"parent-crumb\">";
+                    if(j>0){
+                        content+=" / ";
+                    }
+                    console.log("In function generate Form: parent class"+parent_class+", "+lookup(parent_class));
+                    content+=lookup(parent_class);
+                    content+="</span>";
+                }
+                if(identifiers.length > 1){
+                    content+=" / ";
+                }
+                content+="<span class=\"class-crumb\">";
+                content+=lookup(form_class);
+                content+="</span>";
+                content+="</div><div class=\"form-group\"><input type=\"text\" class=\"form-control\" id=\"value-"+elem+"\"></div>";
+                content+="</div>";
+            }
+            content+="<div class=\"col-lg-8\"><div class=\"col-lg-offset-5\"><button  onclick=\"SubmitForm()\" class=\"btn btn-info\">Submit Values</button></div>";
+            content+="</form></div></div>";
+            formarea.innerHTML=content;
+        }
+    });
+    </script>
+
+</body>
+</html>
