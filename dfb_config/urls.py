@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from dfb.views  import Run, Upload, submit 
+from dfb.views  import Run, Upload, submit , Output
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Upload.as_view()),
     url(r'^build-form', Run.as_view()),
-    url(r'^submit/form', submit)
+    url(r'^submit/form', submit),
+    url(r'^output', Output.as_view())
 ]

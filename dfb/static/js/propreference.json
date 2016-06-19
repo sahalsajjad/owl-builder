@@ -1,0 +1,10 @@
+propertyReference={
+  "hasIngredient": 6, 
+  "isIngredientOf": 7, 
+  "hasBase": 0, 
+  "hasSpiciness": 1, 
+  "isToppingOf": 3, 
+  "hasTopping": 4, 
+  "isBaseOf": 2, 
+  "hasCountryOfOrigin": 5
+}

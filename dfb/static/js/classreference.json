@@ -1,0 +1,613 @@
+classReference={
+  "AmericanHot": {
+    "properties": [], 
+    "id": 1, 
+    "children": []
+  }, 
+  "ArtichokeTopping": {
+    "properties": [], 
+    "id": 3, 
+    "children": []
+  }, 
+  "PizzaBase": {
+    "properties": [
+      2
+    ], 
+    "id": 63, 
+    "children": [
+      15, 
+      87
+    ]
+  }, 
+  "LaReine": {
+    "properties": [], 
+    "id": 37, 
+    "children": []
+  }, 
+  "MixedSeafoodTopping": {
+    "properties": [], 
+    "id": 44, 
+    "children": []
+  }, 
+  "TomatoTopping": {
+    "properties": [], 
+    "id": 90, 
+    "children": [
+      76, 
+      85
+    ]
+  }, 
+  "RedOnionTopping": {
+    "properties": [], 
+    "id": 70, 
+    "children": []
+  }, 
+  "CheeseTopping": {
+    "properties": [], 
+    "id": 10, 
+    "children": [
+      12, 
+      20, 
+      26, 
+      27, 
+      45, 
+      56
+    ]
+  }, 
+  "Fiorentina": {
+    "properties": [], 
+    "id": 17, 
+    "children": []
+  }, 
+  "VegetarianPizzaEquivalent2": {
+    "properties": [], 
+    "id": 96, 
+    "children": []
+  }, 
+  "QuattroFormaggi": {
+    "properties": [], 
+    "id": 68, 
+    "children": []
+  }, 
+  "SundriedTomatoTopping": {
+    "properties": [], 
+    "id": 85, 
+    "children": []
+  }, 
+  "FruitTopping": {
+    "properties": [], 
+    "id": 22, 
+    "children": [
+      84
+    ]
+  }, 
+  "Soho": {
+    "properties": [], 
+    "id": 78, 
+    "children": []
+  }, 
+  "Capricciosa": {
+    "properties": [], 
+    "id": 8, 
+    "children": []
+  }, 
+  "CheeseyVegetableTopping": {
+    "properties": [], 
+    "id": 12, 
+    "children": []
+  }, 
+  "Caprina": {
+    "properties": [], 
+    "id": 9, 
+    "children": []
+  }, 
+  "Spiciness": {
+    "properties": [], 
+    "id": 79, 
+    "children": [
+      31, 
+      42, 
+      43
+    ]
+  }, 
+  "NamedPizza": {
+    "properties": [], 
+    "id": 48, 
+    "children": [
+      0, 
+      1, 
+      5, 
+      8, 
+      9, 
+      17, 
+      21, 
+      23, 
+      25, 
+      37, 
+      39, 
+      46, 
+      49, 
+      55, 
+      65, 
+      67, 
+      68, 
+      72, 
+      75, 
+      77, 
+      78, 
+      91, 
+      98
+    ]
+  }, 
+  "PetitPoisTopping": {
+    "properties": [], 
+    "id": 60, 
+    "children": []
+  }, 
+  "Mild": {
+    "properties": [], 
+    "id": 43, 
+    "children": []
+  }, 
+  "PolloAdAstra": {
+    "properties": [], 
+    "id": 65, 
+    "children": []
+  }, 
+  "MeatTopping": {
+    "properties": [], 
+    "id": 40, 
+    "children": [
+      13, 
+      29, 
+      33, 
+      58
+    ]
+  }, 
+  "Rosa": {
+    "properties": [], 
+    "id": 72, 
+    "children": []
+  }, 
+  "FruttiDiMare": {
+    "properties": [], 
+    "id": 23, 
+    "children": []
+  }, 
+  "PeperonataTopping": {
+    "properties": [], 
+    "id": 57, 
+    "children": []
+  }, 
+  "JalapenoPepperTopping": {
+    "properties": [], 
+    "id": 36, 
+    "children": []
+  }, 
+  "MozzarellaTopping": {
+    "properties": [], 
+    "id": 45, 
+    "children": []
+  }, 
+  "LeekTopping": {
+    "properties": [], 
+    "id": 38, 
+    "children": []
+  }, 
+  "Parmense": {
+    "properties": [], 
+    "id": 55, 
+    "children": []
+  }, 
+  "OliveTopping": {
+    "properties": [], 
+    "id": 52, 
+    "children": []
+  }, 
+  "SpinachTopping": {
+    "properties": [], 
+    "id": 83, 
+    "children": []
+  }, 
+  "OnionTopping": {
+    "properties": [], 
+    "id": 53, 
+    "children": [
+      70
+    ]
+  }, 
+  "MeatyPizza": {
+    "properties": [], 
+    "id": 41, 
+    "children": []
+  }, 
+  "Giardiniera": {
+    "properties": [], 
+    "id": 25, 
+    "children": []
+  }, 
+  "GreenPepperTopping": {
+    "properties": [], 
+    "id": 28, 
+    "children": [
+      32
+    ]
+  }, 
+  "HotGreenPepperTopping": {
+    "properties": [], 
+    "id": 32, 
+    "children": []
+  }, 
+  "SpicyPizzaEquivalent": {
+    "properties": [], 
+    "id": 81, 
+    "children": []
+  }, 
+  "NonVegetarianPizza": {
+    "properties": [], 
+    "id": 50, 
+    "children": []
+  }, 
+  "GarlicTopping": {
+    "properties": [], 
+    "id": 24, 
+    "children": []
+  }, 
+  "Veneziana": {
+    "properties": [], 
+    "id": 98, 
+    "children": []
+  }, 
+  "NutTopping": {
+    "properties": [], 
+    "id": 51, 
+    "children": [
+      61
+    ]
+  }, 
+  "VegetarianPizza": {
+    "properties": [], 
+    "id": 94, 
+    "children": []
+  }, 
+  "VegetableTopping": {
+    "properties": [], 
+    "id": 93, 
+    "children": [
+      3, 
+      4, 
+      7, 
+      12, 
+      24, 
+      38, 
+      47, 
+      52, 
+      53, 
+      59, 
+      60, 
+      71, 
+      83, 
+      90
+    ]
+  }, 
+  "HamTopping": {
+    "properties": [], 
+    "id": 29, 
+    "children": [
+      54
+    ]
+  }, 
+  "AsparagusTopping": {
+    "properties": [], 
+    "id": 4, 
+    "children": []
+  }, 
+  "FourSeasons": {
+    "properties": [], 
+    "id": 21, 
+    "children": []
+  }, 
+  "CheeseyPizza": {
+    "properties": [], 
+    "id": 11, 
+    "children": []
+  }, 
+  "VegetarianTopping": {
+    "properties": [], 
+    "id": 97, 
+    "children": []
+  }, 
+  "VegetarianPizzaEquivalent1": {
+    "properties": [], 
+    "id": 95, 
+    "children": []
+  }, 
+  "DomainConcept": {
+    "properties": [], 
+    "id": 16, 
+    "children": [
+      19
+    ]
+  }, 
+  "ThinAndCrispyPizza": {
+    "properties": [], 
+    "id": 88, 
+    "children": []
+  }, 
+  "Siciliana": {
+    "properties": [], 
+    "id": 75, 
+    "children": []
+  }, 
+  "IceCream": {
+    "properties": [], 
+    "id": 34, 
+    "children": []
+  }, 
+  "SultanaTopping": {
+    "properties": [], 
+    "id": 84, 
+    "children": []
+  }, 
+  "PineKernels": {
+    "properties": [], 
+    "id": 61, 
+    "children": []
+  }, 
+  "AnchoviesTopping": {
+    "properties": [], 
+    "id": 2, 
+    "children": []
+  }, 
+  "RealItalianPizza": {
+    "properties": [], 
+    "id": 69, 
+    "children": []
+  }, 
+  "American": {
+    "properties": [], 
+    "id": 0, 
+    "children": []
+  }, 
+  "Napoletana": {
+    "properties": [], 
+    "id": 49, 
+    "children": []
+  }, 
+  "ValuePartition": {
+    "properties": [], 
+    "id": 92, 
+    "children": [
+      79
+    ]
+  }, 
+  "ChickenTopping": {
+    "properties": [], 
+    "id": 13, 
+    "children": []
+  }, 
+  "ParmaHamTopping": {
+    "properties": [], 
+    "id": 54, 
+    "children": []
+  }, 
+  "PepperTopping": {
+    "properties": [], 
+    "id": 59, 
+    "children": [
+      28, 
+      36, 
+      57, 
+      86
+    ]
+  }, 
+  "CaperTopping": {
+    "properties": [], 
+    "id": 7, 
+    "children": []
+  }, 
+  "ThinAndCrispyBase": {
+    "properties": [], 
+    "id": 87, 
+    "children": []
+  }, 
+  "Hot": {
+    "properties": [], 
+    "id": 31, 
+    "children": []
+  }, 
+  "null": "null", 
+  "Pizza": {
+    "properties": [
+      0, 
+      4
+    ], 
+    "id": 62, 
+    "children": [
+      48
+    ]
+  }, 
+  "Cajun": {
+    "properties": [], 
+    "id": 5, 
+    "children": []
+  }, 
+  "Mushroom": {
+    "properties": [], 
+    "id": 46, 
+    "children": []
+  }, 
+  "Food": {
+    "properties": [
+      6, 
+      7
+    ], 
+    "id": 19, 
+    "children": [
+      34, 
+      62, 
+      63, 
+      64
+    ]
+  }, 
+  "DeepPanBase": {
+    "properties": [], 
+    "id": 15, 
+    "children": []
+  }, 
+  "FourCheesesTopping": {
+    "properties": [], 
+    "id": 20, 
+    "children": []
+  }, 
+  "RosemaryTopping": {
+    "properties": [], 
+    "id": 73, 
+    "children": []
+  }, 
+  "MushroomTopping": {
+    "properties": [], 
+    "id": 47, 
+    "children": []
+  }, 
+  "GoatsCheeseTopping": {
+    "properties": [], 
+    "id": 26, 
+    "children": []
+  }, 
+  "SweetPepperTopping": {
+    "properties": [], 
+    "id": 86, 
+    "children": []
+  }, 
+  "Margherita": {
+    "properties": [], 
+    "id": 39, 
+    "children": []
+  }, 
+  "PrinceCarlo": {
+    "properties": [], 
+    "id": 67, 
+    "children": []
+  }, 
+  "SpicyTopping": {
+    "properties": [], 
+    "id": 82, 
+    "children": []
+  }, 
+  "SauceTopping": {
+    "properties": [], 
+    "id": 74, 
+    "children": [
+      89
+    ]
+  }, 
+  "PizzaTopping": {
+    "properties": [
+      3
+    ], 
+    "id": 64, 
+    "children": [
+      10, 
+      18, 
+      22, 
+      30, 
+      40, 
+      51, 
+      74, 
+      93
+    ]
+  }, 
+  "PrawnsTopping": {
+    "properties": [], 
+    "id": 66, 
+    "children": []
+  }, 
+  "RocketTopping": {
+    "properties": [], 
+    "id": 71, 
+    "children": []
+  }, 
+  "Country": {
+    "properties": [], 
+    "id": 14, 
+    "children": []
+  }, 
+  "UnclosedPizza": {
+    "properties": [], 
+    "id": 91, 
+    "children": []
+  }, 
+  "HerbSpiceTopping": {
+    "properties": [], 
+    "id": 30, 
+    "children": [
+      6, 
+      73
+    ]
+  }, 
+  "InterestingPizza": {
+    "properties": [], 
+    "id": 35, 
+    "children": []
+  }, 
+  "SlicedTomatoTopping": {
+    "properties": [], 
+    "id": 76, 
+    "children": []
+  }, 
+  "Medium": {
+    "properties": [], 
+    "id": 42, 
+    "children": []
+  }, 
+  "CajunSpiceTopping": {
+    "properties": [], 
+    "id": 6, 
+    "children": []
+  }, 
+  "SpicyPizza": {
+    "properties": [], 
+    "id": 80, 
+    "children": []
+  }, 
+  "ParmesanTopping": {
+    "properties": [], 
+    "id": 56, 
+    "children": []
+  }, 
+  "TobascoPepperSauce": {
+    "properties": [], 
+    "id": 89, 
+    "children": []
+  }, 
+  "PeperoniSausageTopping": {
+    "properties": [], 
+    "id": 58, 
+    "children": []
+  }, 
+  "GorgonzolaTopping": {
+    "properties": [], 
+    "id": 27, 
+    "children": []
+  }, 
+  "HotSpicedBeefTopping": {
+    "properties": [], 
+    "id": 33, 
+    "children": []
+  }, 
+  "FishTopping": {
+    "properties": [], 
+    "id": 18, 
+    "children": [
+      2, 
+      44, 
+      66
+    ]
+  }, 
+  "SloppyGiuseppe": {
+    "properties": [], 
+    "id": 77, 
+    "children": []
+  }
+}

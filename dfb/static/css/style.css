@@ -51,6 +51,13 @@ left: 0;
 }
 .form-control{
     padding:0px;
+    display: inline-block;
+}
+.form-control-8{
+  width:80%;
+}
+.form-control-2{
+  width:20%;
 }
 .generator a{
    font-size: 22px;
