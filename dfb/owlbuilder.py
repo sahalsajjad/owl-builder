@@ -24,15 +24,13 @@ class Individual:
 		for p in params:
 			if p['class'] not in D.keys():
 				D[p['class']]=dict()
-				print p['class']
 				D[p['class']]["Class"]=p['class']
 			if p['isProperty'] == "True":
-				print "Accesssing Property",p['property']
 				if "property_list" in D[p['class']].keys():
-					print "in keys"
+					
 					D[p['class']]["property_list"].append(tuple([p['datatype'],p['property'] ,p['value']]))
 				else:
-					print "not in keys"
+					
 					D[p['class']]["property_list"]=list()
 					D[p['class']]["property_list"].append(tuple([ p['datatype'],p['property'],p['value']]))
 			else:

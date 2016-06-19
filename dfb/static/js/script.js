@@ -4,7 +4,7 @@ $(document).ready(function(){
                 try{
                     var premise = classReference[key]['id']== id;
                     if(premise){
-                        //console.log("Infunction:lookup query:"+id +"  "+key);
+                        
                         return key;
                     }
                 }catch(err){
@@ -18,11 +18,11 @@ $(document).ready(function(){
             try{
                 return classReference[class_name]["children"];
             }catch(err){
-              //  console.log(err.message);
+             
             }
         } 
         window.nestedTree = function( depth, parent_id, uniq){
-            //console.log("nestedTree: "+parent_id);
+            
             var un = uniq.toString();
             if(typeof(uniq) === 'object'){
                     un = uniq["id"];
@@ -38,9 +38,9 @@ $(document).ready(function(){
                 treeview = document.getElementById(uniq["id"]);
             }
             var parent_class = lookup(parent_id);
-            //console.log(parent_class);
+            
             var children = classReference[parent_class]["children"];
-            //console.log(children);
+          
             for(var i=0; i< children.length; i++){
                 var child_class = lookup(children[i]);
                 var child_id = children[i].toString();
@@ -173,9 +173,8 @@ $(document).ready(function(){
                 }   
                 var datatype = $(this).prop('value');
                 for(var obj in send_data){
-                    //console.log(send_data[obj]);
                     if(send_data[obj][2] === property){
-                        //console.log("UEFA EURO 2016");
+                        
                         send_data[obj].push(datatype);
                     }
                 } 
@@ -193,7 +192,7 @@ $(document).ready(function(){
             });
         }
         window.getProperties = function(form_class){
-            console.log("In function getProperties"+classReference[lookup(form_class)]["properties"]);
+            
             return classReference[lookup(form_class)]["properties"];
         }
         window.prop_lookup = function(id){
@@ -214,7 +213,7 @@ $(document).ready(function(){
             $('#treeview input:checked').each(function() {
                 selected.push($(this).attr('id'));
             });
-            console.log(selected);
+            
             $('#empty-message').hide();
             var formarea = document.getElementById('form-area');
             var content="<div class=\"row\">";
@@ -243,8 +242,7 @@ $(document).ready(function(){
                     if(j>0){
                         content+=" / ";
                     }
-                    console.log("In function generate Form: parent class"+parent_class+", "+lookup(parent_class));
-                    content+=lookup(parent_class);
+                   content+=lookup(parent_class);
                     content+="</span>";
                 }
                 if(identifiers.length > 1){
